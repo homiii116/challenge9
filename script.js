@@ -35,7 +35,7 @@ function changePicture() {
 //関数名「playSlidedeshow」
 function playSlidedeshow () {
   if (playingID == 0) {
-    document.getElementById('playButton').innerHTML = 'PLAY';
+    document.getElementById('playButton').innerHTML = 'START';
     playingID = setInterval(changePicture, 2000);
     playingID++;
   } else {
