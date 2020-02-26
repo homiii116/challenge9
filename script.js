@@ -10,6 +10,9 @@ const picArray = [
 {src: './images/pic_6.jpg', title: 'picture 6'}
 ];
 
+// 配列picArrayの、インデックス番号をカウントさせる変数counterを用意しましょう。（関数changePictureで使う）
+// 配列picArrayのインデックス番号を1つずつカウントすることで、画像を1枚ずつ順番に変えるスライドを実現できます。
+let counter = 0;
 
 //スライドショーが再生中かどうかを記録しておくためのグローバル変数
 let playingID = 0;
@@ -17,15 +20,28 @@ let playingID = 0;
 //写真を切り替える関数
 //関数名「changePicture」
 function changePicture() {
-  if (playingID > picArray.length) {
-    playingID = 0;
+  if (counter > picArray.length) {
+    document.getElementById('pics').src = picArray[counter].src;
+    document.getElementById('pic-title').innerHTML = picArray[counter].title;
+    counter++;
   } else {
-    playingID ++;
-    document.getElementById('pics').src = picArray[0].src
-    document.getElementById('pic-title').innterHTML = picArray[0].title
-    } 
+    document.getElementById('pics').src = picArray[0].src;
+    document.getElementById('pic-title').innerHTML = picArray[0].title;
+    counter = 0;
+  } 
 }
 
 // ボタンを押してスライドショーを再生・停止する関数
 //関数名「playSlidedeshow」
+function playSlidedeshow () {
+  if (playingID == 0) {
+    document.getElementById('playButton').innerHTML = 'PLAY';
+    playingID = setInterval(changePicture, 2000);
+    playingID++;
+  } else {
+    document.getElementById('playButton').innerHTML = 'STOP';
+    clearInterval(playingID);
+    playingID = 0;
+  }
+}
 
