@@ -27,7 +27,7 @@ function changePicture() {
   } else {
     document.getElementById('pics').src = picArray[0].src;
     document.getElementById('pic-title').innerHTML = picArray[0].title;
-    counter = 0;
+    counter = 1;
   } 
 }
 
